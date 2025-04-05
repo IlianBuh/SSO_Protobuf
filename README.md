@@ -19,3 +19,6 @@ This repository stores proto file with generated grpc-client and grpc-server on 
     - `string email` (required)
     - `string password` (required)
   }
+- **Reponse** {
+    - `string token`
+  }
