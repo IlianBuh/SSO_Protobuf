@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package="IlianBuh.auth.v1;authv1";
+
+service Auth {
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc SignUp(SignUpRequest) returns (SignUpResponse);
+}
+
+message LoginRequest {
+  string login = 1;
+  string password = 2;
+}
+message LoginResponse {
+  string token = 1;
+}
+
+message SignUpRequest {
+  string login = 1;
+  string email = 2;
+  string password = 3;
+}
+message SignUpResponse {
+  string token = 1;
+}
