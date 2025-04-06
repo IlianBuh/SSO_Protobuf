@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package userinfo;
+
+option go_package="IlianBuh.userinfo.v1;userinfov1";
+
+service UserInfo {
+  rpc Users(UsersRequest) returns (UsersResponse);
+  rpc User(UserRequest) returns (UserResponse);
+}
+
+message UsersRequest {
+  repeated int32 uuids = 1;
+}
+message UsersResponse {
+  repeated User users = 1;
+}
+
+message UserRequest {
+  int32 uuid = 1;
+}
+message UserResponse {
+  User user = 1;
+}
+
+message User {
+  int32 uuid = 1;
+  string login = 2;
+  string email = 3; 
+}
