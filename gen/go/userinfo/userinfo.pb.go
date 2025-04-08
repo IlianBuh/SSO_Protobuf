@@ -257,6 +257,94 @@ func (x *User) GetEmail() string {
 	return ""
 }
 
+type UsersExistRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uuid          []int32                `protobuf:"varint,1,rep,packed,name=uuid,proto3" json:"uuid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UsersExistRequest) Reset() {
+	*x = UsersExistRequest{}
+	mi := &file_userinfo_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UsersExistRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UsersExistRequest) ProtoMessage() {}
+
+func (x *UsersExistRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_userinfo_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UsersExistRequest.ProtoReflect.Descriptor instead.
+func (*UsersExistRequest) Descriptor() ([]byte, []int) {
+	return file_userinfo_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UsersExistRequest) GetUuid() []int32 {
+	if x != nil {
+		return x.Uuid
+	}
+	return nil
+}
+
+type UsersExistResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Exist         bool                   `protobuf:"varint,1,opt,name=exist,proto3" json:"exist,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UsersExistResponse) Reset() {
+	*x = UsersExistResponse{}
+	mi := &file_userinfo_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UsersExistResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UsersExistResponse) ProtoMessage() {}
+
+func (x *UsersExistResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_userinfo_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UsersExistResponse.ProtoReflect.Descriptor instead.
+func (*UsersExistResponse) Descriptor() ([]byte, []int) {
+	return file_userinfo_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UsersExistResponse) GetExist() bool {
+	if x != nil {
+		return x.Exist
+	}
+	return false
+}
+
 var File_userinfo_proto protoreflect.FileDescriptor
 
 const file_userinfo_proto_rawDesc = "" +
@@ -273,10 +361,16 @@ const file_userinfo_proto_rawDesc = "" +
 	"\x04User\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\x05R\x04uuid\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email2{\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\"'\n" +
+	"\x11UsersExistRequest\x12\x12\n" +
+	"\x04uuid\x18\x01 \x03(\x05R\x04uuid\"*\n" +
+	"\x12UsersExistResponse\x12\x14\n" +
+	"\x05exist\x18\x01 \x01(\bR\x05exist2\xc4\x01\n" +
 	"\bUserInfo\x128\n" +
 	"\x05Users\x12\x16.userinfo.UsersRequest\x1a\x17.userinfo.UsersResponse\x125\n" +
-	"\x04User\x12\x15.userinfo.UserRequest\x1a\x16.userinfo.UserResponseB!Z\x1fIlianBuh.userinfo.v1;userinfov1b\x06proto3"
+	"\x04User\x12\x15.userinfo.UserRequest\x1a\x16.userinfo.UserResponse\x12G\n" +
+	"\n" +
+	"UsersExist\x12\x1b.userinfo.UsersExistRequest\x1a\x1c.userinfo.UsersExistResponseB!Z\x1fIlianBuh.userinfo.v1;userinfov1b\x06proto3"
 
 var (
 	file_userinfo_proto_rawDescOnce sync.Once
@@ -290,23 +384,27 @@ func file_userinfo_proto_rawDescGZIP() []byte {
 	return file_userinfo_proto_rawDescData
 }
 
-var file_userinfo_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_userinfo_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_userinfo_proto_goTypes = []any{
-	(*UsersRequest)(nil),  // 0: userinfo.UsersRequest
-	(*UsersResponse)(nil), // 1: userinfo.UsersResponse
-	(*UserRequest)(nil),   // 2: userinfo.UserRequest
-	(*UserResponse)(nil),  // 3: userinfo.UserResponse
-	(*User)(nil),          // 4: userinfo.User
+	(*UsersRequest)(nil),       // 0: userinfo.UsersRequest
+	(*UsersResponse)(nil),      // 1: userinfo.UsersResponse
+	(*UserRequest)(nil),        // 2: userinfo.UserRequest
+	(*UserResponse)(nil),       // 3: userinfo.UserResponse
+	(*User)(nil),               // 4: userinfo.User
+	(*UsersExistRequest)(nil),  // 5: userinfo.UsersExistRequest
+	(*UsersExistResponse)(nil), // 6: userinfo.UsersExistResponse
 }
 var file_userinfo_proto_depIdxs = []int32{
 	4, // 0: userinfo.UsersResponse.users:type_name -> userinfo.User
 	4, // 1: userinfo.UserResponse.user:type_name -> userinfo.User
 	0, // 2: userinfo.UserInfo.Users:input_type -> userinfo.UsersRequest
 	2, // 3: userinfo.UserInfo.User:input_type -> userinfo.UserRequest
-	1, // 4: userinfo.UserInfo.Users:output_type -> userinfo.UsersResponse
-	3, // 5: userinfo.UserInfo.User:output_type -> userinfo.UserResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
+	5, // 4: userinfo.UserInfo.UsersExist:input_type -> userinfo.UsersExistRequest
+	1, // 5: userinfo.UserInfo.Users:output_type -> userinfo.UsersResponse
+	3, // 6: userinfo.UserInfo.User:output_type -> userinfo.UserResponse
+	6, // 7: userinfo.UserInfo.UsersExist:output_type -> userinfo.UsersExistResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
 	2, // [2:2] is the sub-list for extension extendee
 	0, // [0:2] is the sub-list for field type_name
@@ -323,7 +421,7 @@ func file_userinfo_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_userinfo_proto_rawDesc), len(file_userinfo_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
