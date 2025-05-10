@@ -7,12 +7,12 @@
 package userinfov1
 
 import (
+	IlianBuh_user_v1 "IlianBuh.user.v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-	user_v1 "user.v1"
 )
 
 const (
@@ -67,8 +67,8 @@ func (x *UsersRequest) GetUuids() []int32 {
 }
 
 type UsersResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Users         []*user_v1.User        `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Users         []*IlianBuh_user_v1.User `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -103,7 +103,7 @@ func (*UsersResponse) Descriptor() ([]byte, []int) {
 	return file_userinfo_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *UsersResponse) GetUsers() []*user_v1.User {
+func (x *UsersResponse) GetUsers() []*IlianBuh_user_v1.User {
 	if x != nil {
 		return x.Users
 	}
@@ -156,7 +156,7 @@ func (x *UserRequest) GetUuid() int32 {
 
 type UserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *user_v1.User          `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	User          *IlianBuh_user_v1.User `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -191,7 +191,7 @@ func (*UserResponse) Descriptor() ([]byte, []int) {
 	return file_userinfo_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *UserResponse) GetUser() *user_v1.User {
+func (x *UserResponse) GetUser() *IlianBuh_user_v1.User {
 	if x != nil {
 		return x.User
 	}
@@ -324,13 +324,13 @@ func file_userinfo_proto_rawDescGZIP() []byte {
 
 var file_userinfo_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_userinfo_proto_goTypes = []any{
-	(*UsersRequest)(nil),       // 0: userinfo.UsersRequest
-	(*UsersResponse)(nil),      // 1: userinfo.UsersResponse
-	(*UserRequest)(nil),        // 2: userinfo.UserRequest
-	(*UserResponse)(nil),       // 3: userinfo.UserResponse
-	(*UsersExistRequest)(nil),  // 4: userinfo.UsersExistRequest
-	(*UsersExistResponse)(nil), // 5: userinfo.UsersExistResponse
-	(*user_v1.User)(nil),       // 6: User
+	(*UsersRequest)(nil),          // 0: userinfo.UsersRequest
+	(*UsersResponse)(nil),         // 1: userinfo.UsersResponse
+	(*UserRequest)(nil),           // 2: userinfo.UserRequest
+	(*UserResponse)(nil),          // 3: userinfo.UserResponse
+	(*UsersExistRequest)(nil),     // 4: userinfo.UsersExistRequest
+	(*UsersExistResponse)(nil),    // 5: userinfo.UsersExistResponse
+	(*IlianBuh_user_v1.User)(nil), // 6: User
 }
 var file_userinfo_proto_depIdxs = []int32{
 	6, // 0: userinfo.UsersResponse.users:type_name -> User
