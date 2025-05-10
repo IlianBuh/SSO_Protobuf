@@ -22,6 +22,13 @@ tasks:
     cmds:
       - protoc -I proto ./proto/follow.proto --go_out=./gen/go/follow --go_opt=paths=source_relative --go-grpc_out=./gen/go/follow --go-grpc_opt=paths=source_relative
 
+  generate-user:
+    aliases:
+      - user
+    desc: "command to generate follow service gRPC-server and gRPC-client using protofiles"
+    cmds:
+      - protoc -I proto ./proto/user.proto --go_out=./gen/go/user --go_opt=paths=source_relative --go-grpc_out=./gen/go/user --go-grpc_opt=paths=source_relative
+
   default:
     cmds:
-      - task auth | task userinfo | task follow
+      - task auth | task userinfo | task follow | task user
