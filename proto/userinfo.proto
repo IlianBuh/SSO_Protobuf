@@ -24,15 +24,11 @@ message UserResponse {
   User user = 1;
 }
 
-message User {
-  int32 uuid = 1;
-  string login = 2;
-  string email = 3; 
-}
-
 message UsersExistRequest {
   repeated int32 uuid = 1;
 }
 message UsersExistResponse {
   bool exist = 1;
 }
+
+import "user.proto";

@@ -1,0 +1,42 @@
+
+syntax = "proto3";
+
+package follow;
+
+option go_package = "IlianBuh.follow.v1;v1";
+
+service Follow {
+    rpc Follow(FollowRequest) returns (FollowResponse);
+    rpc Unfollow(UnfollowRequest) returns (UnfollowResponse);
+    rpc Followers(FollowersRequest) returns (FollowersResponse);
+    rpc Followees(FolloweesRequest) returns (FolloweesResponse);
+}
+
+message FollowRequest {
+    int32 src = 1;
+    int32 target = 2; 
+}
+message FollowResponse {}
+
+message UnfollowRequest {
+    int32 src = 1;
+    int32 target = 2; 
+}
+message UnfollowResponse {}
+
+message FollowersRequest {
+    int32 uuid = 1;
+}
+message FollowersResponse {
+    repeated User user = 1;
+}
+
+message FolloweesRequest {
+    int32 uuid = 1;
+}
+message FolloweesResponse {
+    repeated User user = 1;
+}
+
+
+import "user.proto";
