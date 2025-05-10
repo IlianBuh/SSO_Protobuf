@@ -7,7 +7,7 @@
 package v1
 
 import (
-	IlianBuh_user_v1 "IlianBuh.user.v1"
+	user "github.com/IlianBuh/SSO_Protobuf/gen/go/user"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -243,8 +243,8 @@ func (x *FollowersRequest) GetUuid() int32 {
 }
 
 type FollowersResponse struct {
-	state         protoimpl.MessageState   `protogen:"open.v1"`
-	User          []*IlianBuh_user_v1.User `protobuf:"bytes,1,rep,name=user,proto3" json:"user,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          []*user.User           `protobuf:"bytes,1,rep,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -279,7 +279,7 @@ func (*FollowersResponse) Descriptor() ([]byte, []int) {
 	return file_follow_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *FollowersResponse) GetUser() []*IlianBuh_user_v1.User {
+func (x *FollowersResponse) GetUser() []*user.User {
 	if x != nil {
 		return x.User
 	}
@@ -331,8 +331,8 @@ func (x *FolloweesRequest) GetUuid() int32 {
 }
 
 type FolloweesResponse struct {
-	state         protoimpl.MessageState   `protogen:"open.v1"`
-	User          []*IlianBuh_user_v1.User `protobuf:"bytes,1,rep,name=user,proto3" json:"user,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          []*user.User           `protobuf:"bytes,1,rep,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -367,7 +367,7 @@ func (*FolloweesResponse) Descriptor() ([]byte, []int) {
 	return file_follow_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *FolloweesResponse) GetUser() []*IlianBuh_user_v1.User {
+func (x *FolloweesResponse) GetUser() []*user.User {
 	if x != nil {
 		return x.User
 	}
@@ -416,15 +416,15 @@ func file_follow_proto_rawDescGZIP() []byte {
 
 var file_follow_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_follow_proto_goTypes = []any{
-	(*FollowRequest)(nil),         // 0: follow.FollowRequest
-	(*FollowResponse)(nil),        // 1: follow.FollowResponse
-	(*UnfollowRequest)(nil),       // 2: follow.UnfollowRequest
-	(*UnfollowResponse)(nil),      // 3: follow.UnfollowResponse
-	(*FollowersRequest)(nil),      // 4: follow.FollowersRequest
-	(*FollowersResponse)(nil),     // 5: follow.FollowersResponse
-	(*FolloweesRequest)(nil),      // 6: follow.FolloweesRequest
-	(*FolloweesResponse)(nil),     // 7: follow.FolloweesResponse
-	(*IlianBuh_user_v1.User)(nil), // 8: User
+	(*FollowRequest)(nil),     // 0: follow.FollowRequest
+	(*FollowResponse)(nil),    // 1: follow.FollowResponse
+	(*UnfollowRequest)(nil),   // 2: follow.UnfollowRequest
+	(*UnfollowResponse)(nil),  // 3: follow.UnfollowResponse
+	(*FollowersRequest)(nil),  // 4: follow.FollowersRequest
+	(*FollowersResponse)(nil), // 5: follow.FollowersResponse
+	(*FolloweesRequest)(nil),  // 6: follow.FolloweesRequest
+	(*FolloweesResponse)(nil), // 7: follow.FolloweesResponse
+	(*user.User)(nil),         // 8: User
 }
 var file_follow_proto_depIdxs = []int32{
 	8, // 0: follow.FollowersResponse.user:type_name -> User
