@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserInfo_Users_FullMethodName      = "/userinfo.UserInfo/Users"
-	UserInfo_User_FullMethodName       = "/userinfo.UserInfo/User"
-	UserInfo_UsersExist_FullMethodName = "/userinfo.UserInfo/UsersExist"
+	UserInfo_Users_FullMethodName        = "/userinfo.UserInfo/Users"
+	UserInfo_User_FullMethodName         = "/userinfo.UserInfo/User"
+	UserInfo_UsersByLogin_FullMethodName = "/userinfo.UserInfo/UsersByLogin"
+	UserInfo_UsersExist_FullMethodName   = "/userinfo.UserInfo/UsersExist"
 )
 
 // UserInfoClient is the client API for UserInfo service.
@@ -30,6 +31,7 @@ const (
 type UserInfoClient interface {
 	Users(ctx context.Context, in *UsersRequest, opts ...grpc.CallOption) (*UsersResponse, error)
 	User(ctx context.Context, in *UserRequest, opts ...grpc.CallOption) (*UserResponse, error)
+	UsersByLogin(ctx context.Context, in *UsersByLoginRequest, opts ...grpc.CallOption) (*UsersByLoginResponse, error)
 	UsersExist(ctx context.Context, in *UsersExistRequest, opts ...grpc.CallOption) (*UsersExistResponse, error)
 }
 
@@ -61,6 +63,16 @@ func (c *userInfoClient) User(ctx context.Context, in *UserRequest, opts ...grpc
 	return out, nil
 }
 
+func (c *userInfoClient) UsersByLogin(ctx context.Context, in *UsersByLoginRequest, opts ...grpc.CallOption) (*UsersByLoginResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UsersByLoginResponse)
+	err := c.cc.Invoke(ctx, UserInfo_UsersByLogin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *userInfoClient) UsersExist(ctx context.Context, in *UsersExistRequest, opts ...grpc.CallOption) (*UsersExistResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UsersExistResponse)
@@ -77,6 +89,7 @@ func (c *userInfoClient) UsersExist(ctx context.Context, in *UsersExistRequest, 
 type UserInfoServer interface {
 	Users(context.Context, *UsersRequest) (*UsersResponse, error)
 	User(context.Context, *UserRequest) (*UserResponse, error)
+	UsersByLogin(context.Context, *UsersByLoginRequest) (*UsersByLoginResponse, error)
 	UsersExist(context.Context, *UsersExistRequest) (*UsersExistResponse, error)
 	mustEmbedUnimplementedUserInfoServer()
 }
@@ -93,6 +106,9 @@ func (UnimplementedUserInfoServer) Users(context.Context, *UsersRequest) (*Users
 }
 func (UnimplementedUserInfoServer) User(context.Context, *UserRequest) (*UserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method User not implemented")
+}
+func (UnimplementedUserInfoServer) UsersByLogin(context.Context, *UsersByLoginRequest) (*UsersByLoginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UsersByLogin not implemented")
 }
 func (UnimplementedUserInfoServer) UsersExist(context.Context, *UsersExistRequest) (*UsersExistResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UsersExist not implemented")
@@ -154,6 +170,24 @@ func _UserInfo_User_Handler(srv interface{}, ctx context.Context, dec func(inter
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserInfo_UsersByLogin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UsersByLoginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserInfoServer).UsersByLogin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserInfo_UsersByLogin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserInfoServer).UsersByLogin(ctx, req.(*UsersByLoginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UserInfo_UsersExist_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UsersExistRequest)
 	if err := dec(in); err != nil {
@@ -186,6 +220,10 @@ var UserInfo_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "User",
 			Handler:    _UserInfo_User_Handler,
+		},
+		{
+			MethodName: "UsersByLogin",
+			Handler:    _UserInfo_UsersByLogin_Handler,
 		},
 		{
 			MethodName: "UsersExist",

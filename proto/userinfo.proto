@@ -7,7 +7,15 @@ option go_package="IlianBuh.userinfo.v1;userinfov1";
 service UserInfo {
   rpc Users(UsersRequest) returns (UsersResponse);
   rpc User(UserRequest) returns (UserResponse);
+  rpc UsersByLogin(UsersByLoginRequest) returns (UsersByLoginResponse);
   rpc UsersExist(UsersExistRequest) returns (UsersExistResponse);
+}
+
+message UserRequest {
+  int32 uuid = 1;
+}
+message UserResponse {
+  User user = 1;
 }
 
 message UsersRequest {
@@ -17,11 +25,11 @@ message UsersResponse {
   repeated User users = 1;
 }
 
-message UserRequest {
-  int32 uuid = 1;
+message UsersByLoginRequest {
+  string login = 1;
 }
-message UserResponse {
-  User user = 1;
+message UsersByLoginResponse {
+  repeated User users = 1;
 }
 
 message UsersExistRequest {
