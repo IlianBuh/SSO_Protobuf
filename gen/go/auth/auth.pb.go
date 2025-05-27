@@ -187,7 +187,7 @@ func (x *SignUpRequest) GetPassword() string {
 
 type SignUpResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=accessToken,proto3" json:"accessToken,omitempty"`
 	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refreshToken,proto3" json:"refreshToken,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -223,9 +223,9 @@ func (*SignUpResponse) Descriptor() ([]byte, []int) {
 	return file_auth_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *SignUpResponse) GetToken() string {
+func (x *SignUpResponse) GetAccessToken() string {
 	if x != nil {
-		return x.Token
+		return x.AccessToken
 	}
 	return ""
 }
@@ -239,7 +239,7 @@ func (x *SignUpResponse) GetRefreshToken() string {
 
 type UpdateRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refreshToken,proto3" json:"refreshToken,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -274,9 +274,9 @@ func (*UpdateRequest) Descriptor() ([]byte, []int) {
 	return file_auth_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateRequest) GetToken() string {
+func (x *UpdateRequest) GetRefreshToken() string {
 	if x != nil {
-		return x.Token
+		return x.RefreshToken
 	}
 	return ""
 }
@@ -348,12 +348,12 @@ const file_auth_proto_rawDesc = "" +
 	"\rSignUpRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\"J\n" +
-	"\x0eSignUpResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\x12\"\n" +
-	"\frefreshToken\x18\x02 \x01(\tR\frefreshToken\"%\n" +
-	"\rUpdateRequest\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\"V\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\"V\n" +
+	"\x0eSignUpResponse\x12 \n" +
+	"\vaccessToken\x18\x01 \x01(\tR\vaccessToken\x12\"\n" +
+	"\frefreshToken\x18\x02 \x01(\tR\frefreshToken\"3\n" +
+	"\rUpdateRequest\x12\"\n" +
+	"\frefreshToken\x18\x01 \x01(\tR\frefreshToken\"V\n" +
 	"\x0eUpdateResponse\x12 \n" +
 	"\vaccessToken\x18\x01 \x01(\tR\vaccessToken\x12\"\n" +
 	"\frefreshToken\x18\x02 \x01(\tR\frefreshToken2\xa8\x01\n" +
