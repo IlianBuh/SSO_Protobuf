@@ -7,6 +7,7 @@ option go_package="IlianBuh.auth.v1;authv1";
 service Auth {
   rpc Login(LoginRequest) returns (LoginResponse);
   rpc SignUp(SignUpRequest) returns (SignUpResponse);
+  rpc UpdateTokens(UpdateRequest) returns (UpdateResponse);
 }
 
 message LoginRequest {
@@ -14,7 +15,8 @@ message LoginRequest {
   string password = 2;
 }
 message LoginResponse {
-  string token = 1;
+  string accessToken = 1;
+  string refreshToken = 2;
 }
 
 message SignUpRequest {
@@ -24,4 +26,13 @@ message SignUpRequest {
 }
 message SignUpResponse {
   string token = 1;
+  string refreshToken = 2;
+}
+
+message UpdateRequest {
+  string refreshToken = 1;
+}
+message UpdateResponse {
+  string accessToken = 1;
+  string refreshToken = 2;
 }
